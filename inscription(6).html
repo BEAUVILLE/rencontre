@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#06130f">
+  <meta name="robots" content="noindex,nofollow">
+  <title>DIGIY RENCONTRE — Connexion par code</title>
+  <style>
+    :root{--bg:#06130f;--line:rgba(255,255,255,.14);--text:#f7fbf8;--muted:rgba(247,251,248,.72);--gold:#dcb45a;--gold2:#f2cc78;--green:#12b76a}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 15% 0%,rgba(220,180,90,.15),transparent 30%),linear-gradient(180deg,#06130f,#0a2119);padding:18px}.wrap{width:min(620px,100%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.brand{font-weight:1000}.back,.switch{color:#fff2bf;text-decoration:none;font-weight:900}.back{border:1px solid var(--line);border-radius:999px;padding:9px 12px}.card{border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,rgba(16,38,30,.98),rgba(10,29,22,.98));padding:20px;box-shadow:0 18px 44px rgba(0,0,0,.3)}h1{margin:8px 0 6px;font-size:34px;line-height:1}.lead{margin:0 0 16px;color:var(--muted);font-weight:760}.tag{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid rgba(220,180,90,.28);background:rgba(220,180,90,.08);color:#fff2bf;font-size:12px;font-weight:1000}.form{display:grid;gap:11px}.field{display:grid;gap:6px}.field label{font-size:13px;font-weight:950;color:#fff4ca}.field input,.field select,.field textarea{width:100%;border-radius:14px;border:1px solid var(--line);background:#091f17;color:#fff;padding:12px;font:inherit}.field textarea{min-height:84px}.private{font-size:12px;color:var(--muted);font-weight:800}.check{display:flex;align-items:flex-start;gap:9px;padding:11px;border-radius:15px;border:1px solid rgba(18,183,106,.24);background:rgba(18,183,106,.06);color:var(--muted);font-size:13px;font-weight:800}.submit{min-height:50px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--green),var(--gold2));color:#062414;font-weight:1000;font-size:15px;cursor:pointer}.secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--line)}.switch{display:block;text-align:center;margin-top:12px}.msg{min-height:22px;margin-top:10px;color:#fff2bf;font-weight:900;font-size:13px}.hidden{display:none!important}.otp{font-size:28px!important;letter-spacing:6px;text-align:center;font-weight:1000}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">🤝 DIGIY RENCONTRE</div><a class="back" href="./">← Retour</a></div>
+  <div class="card">
+    <span class="tag">V1 PILOTE · 18+ UNIQUEMENT</span>
+    <h1 id="title">Créer mon profil</h1>
+    <p class="lead" id="lead">Reçois un code de connexion par email. Aucun lien à cliquer.</p>
+
+    <div id="entryStep">
+      <div class="form" id="signupFields">
+        <div class="field"><label>Prénom ou pseudo</label><input id="name" maxlength="60" placeholder="Ex. Awa" autocomplete="nickname"></div>
+        <div class="field"><label>Email de connexion</label><input id="email" type="email" placeholder="vous@exemple.com" autocomplete="email"></div>
+        <div class="field"><label>Téléphone privé</label><input id="phone" inputmode="tel" placeholder="+221 77 123 45 67" autocomplete="tel"><div class="private">Ce numéro reste privé et n’est jamais affiché dans le profil RENCONTRE.</div></div>
+        <div class="field"><label>Zone générale</label><select id="zone">
+          <option value="e04e2305-29f7-4055-bb77-cc80d88fac03">Saly</option>
+          <option value="4ad4b7dd-a0f2-4027-b64a-ccf602aa4e0a">Somone</option>
+          <option value="72b3a7ca-694c-4e80-a1f5-71cd83620329">Ngaparou</option>
+          <option value="b66f4abe-6b46-43c0-961d-c76564e14f19">Mbour</option>
+          <option value="31f30ac1-3235-43ab-9b44-339e71f7cf5a">Popenguine</option>
+          <option value="98edc9b5-ecbf-4b0f-b316-b16396cc066f">Ndayane</option>
+        </select></div>
+        <div class="field"><label>Ce qui m’amène ici</label><select id="intention">
+          <option value="OUVERT">OUVERT</option><option value="AMITIE">AMITIÉ</option><option value="CONNAISSANCE">CONNAISSANCE</option><option value="RENCONTRE">RENCONTRE</option><option value="CURIEUX">CURIEUX</option>
+        </select></div>
+        <div class="field"><label>Quelques mots</label><textarea id="bio" maxlength="500" placeholder="Centres d’intérêt, activités, découvertes…"></textarea></div>
+        <label class="check"><input id="adult" type="checkbox"><span>Je confirme avoir 18 ans ou plus et accepter les règles V1 de sécurité.</span></label>
+      </div>
+
+      <div class="form hidden" id="loginFields">
+        <div class="field"><label>Email</label><input id="loginEmail" type="email" placeholder="vous@exemple.com" autocomplete="email"></div>
+      </div>
+
+      <button class="submit" id="send">Recevoir mon code</button>
+      <a class="switch" href="?mode=login" id="switch">J’ai déjà un compte</a>
+    </div>
+
+    <div class="form hidden" id="otpStep">
+      <div class="field"><label>Code reçu par email</label><input id="otp" class="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="Code OTP"></div>
+      <div class="private">Le code peut contenir de 6 à 10 chiffres selon la configuration Supabase.</div>
+      <button class="submit" id="verify">VALIDER LE CODE</button>
+      <button class="submit secondary" id="restart" type="button">Changer d’email</button>
+    </div>
+
+    <div class="msg" id="msg"></div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js?v=20260810-otp2"></script>
+<script>
+(() => {
+  'use strict';
+  const cfg=window.DIGIY_RENCONTRE_CONFIG||{};
+  const client=(cfg.supabaseUrl&&cfg.supabaseAnonKey&&window.supabase)?window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseAnonKey):null;
+  const PENDING='digiy_rencontre_pending_profile_v1';
+  const OTP_EMAIL='digiy_rencontre_otp_email_v1';
+  const q=id=>document.getElementById(id);
+  const mode=new URLSearchParams(location.search).get('mode')==='login'?'login':'signup';
+
+  if(mode==='login'){
+    localStorage.removeItem(PENDING);
+    q('title').textContent='Se connecter';
+    q('lead').textContent='Reçois un code de connexion par email pour retrouver ton espace.';
+    q('signupFields').classList.add('hidden');
+    q('loginFields').classList.remove('hidden');
+    q('switch').textContent='Créer un nouveau profil';
+    q('switch').href='./inscription.html';
+  }
+
+  function phone(v){v=String(v||'').trim().replace(/[^\d+]/g,'');if(/^0\d{8,}$/.test(v))v='+221'+v.replace(/^0+/,'');if(/^\d{9}$/.test(v))v='+221'+v;if(/^\d{11,15}$/.test(v)&&!v.startsWith('+'))v='+'+v;return v.startsWith('+')?v:''}
+  function showOtp(email){sessionStorage.setItem(OTP_EMAIL,email);q('entryStep').classList.add('hidden');q('otpStep').classList.remove('hidden');q('otp').focus();q('msg').textContent='Code envoyé ✓ Saisis le code complet reçu par email.'}
+  function clearOtpEmail(){sessionStorage.removeItem(OTP_EMAIL)}
+
+  async function finishProfile(){
+    const raw=localStorage.getItem(PENDING);if(!raw)return true;
+    let p;try{p=JSON.parse(raw)}catch(e){q('msg').textContent='Profil local illisible. Recommence l’inscription.';return false}
+
+    const {data:userData,error:userError}=await client.auth.getUser();
+    const user=userData?.user;
+    if(userError||!user?.id){console.error(userError);q('msg').textContent='Code validé, mais la session utilisateur doit être vérifiée.';return false}
+
+    const {error}=await client.rpc('digiy_rencontre_register_profile',{
+      p_phone_number:p.phone_number,
+      p_display_name:p.display_name,
+      p_zone_id:p.zone_id,
+      p_intention:p.intention,
+      p_bio:p.bio,
+      p_is_adult:true
+    });
+    if(error){
+      console.error(error);
+      q('msg').textContent='Code validé, mais la finalisation RENCONTRE bloque : '+error.message;
+      return false;
+    }
+
+    localStorage.removeItem(PENDING);
+    return true;
+  }
+
+  q('send').onclick=async()=>{
+    if(!client){q('msg').textContent='Connexion DIGIY indisponible.';return}
+    let email='';
+    if(mode==='signup'){
+      const name=q('name').value.trim(), ph=phone(q('phone').value);email=q('email').value.trim().toLowerCase();
+      if(name.length<2){q('msg').textContent='Choisis un prénom ou pseudo.';return}
+      if(!email.includes('@')){q('msg').textContent='Email invalide.';return}
+      if(!ph){q('msg').textContent='Téléphone invalide.';return}
+      if(!q('adult').checked){q('msg').textContent='Le module V1 est réservé aux 18+.';return}
+      localStorage.setItem(PENDING,JSON.stringify({display_name:name,phone_number:ph,zone_id:q('zone').value,intention:q('intention').value,bio:q('bio').value.trim()||null,is_adult:true}));
+    }else{
+      localStorage.removeItem(PENDING);
+      email=q('loginEmail').value.trim().toLowerCase();if(!email.includes('@')){q('msg').textContent='Email invalide.';return}
+    }
+    q('send').disabled=true;q('msg').textContent='Envoi du code…';
+    const {error}=await client.auth.signInWithOtp({email,options:{shouldCreateUser:mode==='signup'}});
+    q('send').disabled=false;
+    if(error){q('msg').textContent='Envoi impossible : '+error.message;return}
+    showOtp(email);
+  };
+
+  q('verify').onclick=async()=>{
+    if(!client)return;
+
+    const {data:existingSession}=await client.auth.getSession();
+    if(existingSession?.session){
+      q('verify').disabled=true;q('msg').textContent='Code déjà validé ✓ Finalisation du profil…';
+      const ok=await finishProfile();
+      q('verify').disabled=false;
+      if(ok){clearOtpEmail();location.replace('./')}
+      return;
+    }
+
+    const email=sessionStorage.getItem(OTP_EMAIL)||'';
+    const token=q('otp').value.replace(/\D/g,'').slice(0,10);
+    if(!email){q('msg').textContent='Email introuvable. Recommence la demande de code.';return}
+    if(token.length<6||token.length>10){q('msg').textContent='Saisis le code complet reçu par email.';return}
+    q('verify').disabled=true;q('msg').textContent='Vérification du code…';
+    const {data,error}=await client.auth.verifyOtp({email,token,type:'email'});
+    q('verify').disabled=false;
+    if(error||!data?.session){q('msg').textContent='Code invalide ou expiré : '+(error?.message||'session non créée');return}
+
+    q('msg').textContent='Code validé ✓ Finalisation du profil…';
+    if(await finishProfile()){
+      clearOtpEmail();
+      location.replace('./');
+    }
+  };
+
+  q('restart').onclick=async()=>{
+    clearOtpEmail();
+    if(client){try{await client.auth.signOut()}catch(e){}}
+    q('otpStep').classList.add('hidden');
+    q('entryStep').classList.remove('hidden');
+    q('verify').textContent='VALIDER LE CODE';
+    q('msg').textContent='';
+  };
+
+  (async()=>{
+    if(!client)return;
+    const {data}=await client.auth.getSession();
+    if(!data?.session)return;
+    if(await finishProfile()){
+      clearOtpEmail();
+      location.replace('./');
+      return;
+    }
+    q('entryStep').classList.add('hidden');
+    q('otpStep').classList.remove('hidden');
+    q('verify').textContent='FINALISER LE PROFIL';
+  })();
+})();
+</script>
+</body>
+</html>
