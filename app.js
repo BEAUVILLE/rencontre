@@ -50,6 +50,10 @@
     }[c]));
   }
 
+  function displayIntention(value = 'OUVERT') {
+    return value === 'RENCONTRE' ? 'LIEN LOCAL' : value;
+  }
+
   function setStatus(message, good = false) {
     status.textContent = message;
     status.style.borderColor = good ? 'rgba(18,183,106,.38)' : '';
@@ -148,7 +152,7 @@
       <article class="card">
         <div class="card-head">
           <div>
-            <span class="tag">${esc(p.intention || 'OUVERT')}</span>
+            <span class="tag">${esc(displayIntention(p.intention || 'OUVERT'))}</span>
 
             <h3 style="margin-top:7px">
               ${esc(p.display_name)}
@@ -351,7 +355,7 @@
 
       if (!currentProfile?.is_active || !currentProfile?.is_adult) {
         setStatus(
-          'Un profil DIGIY RENCONTRE actif et 18+ est requis avant la découverte.'
+          'Un profil HUMAIN DU TERRITOIRE actif et 18+ est requis avant la découverte.'
         );
 
         renderCircles();
