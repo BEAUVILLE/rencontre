@@ -104,3 +104,44 @@ window.DIGIY_RENCONTRE_CONFIG = {
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start,{once:true});
   else start();
 })();
+
+// Retour universel DIGIYLYFE.COM — visible et tactile sans modifier le moteur Rencontre.
+(function(){
+  'use strict';
+
+  function strengthenHomeReturn(){
+    var link=document.querySelector('.topbar .hub');
+    if(!link) return;
+
+    link.href='https://digiylyfe.com/';
+    link.textContent='← RETOUR DIGIYLYFE.COM';
+    link.removeAttribute('target');
+    link.setAttribute('aria-label','Retour DIGIYLYFE.COM');
+
+    var bar=document.querySelector('.topbar .wrap');
+    if(bar){
+      bar.style.flexWrap='wrap';
+      bar.style.padding='10px 0';
+    }
+
+    link.style.order='-1';
+    link.style.width='100%';
+    link.style.minHeight='52px';
+    link.style.display='flex';
+    link.style.alignItems='center';
+    link.style.justifyContent='center';
+    link.style.padding='11px 18px';
+    link.style.border='2px solid #dcb45a';
+    link.style.borderRadius='999px';
+    link.style.background='#10261e';
+    link.style.color='#fff';
+    link.style.textDecoration='none';
+    link.style.fontWeight='1000';
+    link.style.fontSize='15px';
+    link.style.letterSpacing='.02em';
+    link.style.boxShadow='0 8px 20px rgba(0,0,0,.22)';
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',strengthenHomeReturn,{once:true});
+  else strengthenHomeReturn();
+})();
