@@ -1,0 +1,37 @@
+name: Patch static Rencontre return once
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make DIGIYLYFE return static and visible
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          old='<header class="topbar"><div class="wrap"><div class="brand"><div class="logo">🤝</div><div>HUMAIN DU TERRITOIRE<small>Gratuit · local · volontaire</small></div></div><a class="hub" href="https://digiylyfe.com/">← DIGIYLYFE</a></div></header>'
+          new='''<header class="topbar"><div class="wrap" style="flex-wrap:wrap;padding:10px 0"><a class="hub" href="https://digiylyfe.com/index.html?from=rencontre&amp;v=20260822" aria-label="Retour DIGIYLYFE.COM" style="order:-1;width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;padding:11px 18px;border:2px solid #dcb45a;border-radius:999px;background:#10261e;color:#fff;text-decoration:none;font-weight:1000;font-size:15px;letter-spacing:.02em;box-shadow:0 8px 20px rgba(0,0,0,.22)">← RETOUR DIGIYLYFE.COM</a><div class="brand"><div class="logo">🤝</div><div>HUMAIN DU TERRITOIRE<small>Gratuit · local · volontaire</small></div></div></div></header>'''
+          if 'href="https://digiylyfe.com/index.html?from=rencontre&amp;v=20260822"' in s:
+              raise SystemExit(0)
+          if old not in s:
+              raise SystemExit('Expected Rencontre header not found; refusing unrelated change')
+          p.write_text(s.replace(old,new,1),encoding='utf-8')
+          PY
+      - name: Commit exact change
+        run: |
+          if git diff --quiet -- index.html; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "UI: make Rencontre DIGIYLYFE return static"
+          git push
