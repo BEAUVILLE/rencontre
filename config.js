@@ -113,7 +113,7 @@ window.DIGIY_RENCONTRE_CONFIG = {
     var link=document.querySelector('.topbar .hub');
     if(!link) return;
 
-    link.href='https://digiylyfe.com/';
+    link.href='https://digiylyfe.com/index.html?v=20260822-1212';
     link.textContent='← RETOUR DIGIYLYFE.COM';
     link.removeAttribute('target');
     link.setAttribute('aria-label','Retour DIGIYLYFE.COM');
